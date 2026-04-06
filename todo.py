@@ -53,18 +53,4 @@ def update_status(task_list, task, status, updated=datetime.datetime.now().strft
             tasks["updated"] = updated
             return task_list
 
-
-
-adding_task(list, "swimming")
-adding_task(list, "sleeping")
-
-
-update_description(list, "swimming", "going to the pool")
-update_description(list, "sleeping", "going to bed")
-
-
-update_status(list, "sleeping", "done")
-delete_task(list, "swimming")
-
-
-printing_tasks(list)
+#up to creating a menu to add, update description or status, delete task, list all task, list by status
