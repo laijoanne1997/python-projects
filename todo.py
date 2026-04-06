@@ -9,16 +9,18 @@ import random
 list = []
 
 def adding_task(task_list, task, id="", description="", status="to do", created_at=datetime.datetime.now().strftime("%d %B %Y")):
-    task_list.append({"task": task, "id": random.randint (0,100), "description": description, "status": status, "created_at": created_at})
-    print(f"{task} added to list (ID: )")
+    number = random.randint(1, 100)
+    task_list.append({"task": task, "id": number, "description": description, "status": status, "created_at": created_at})
+    print(f"{task} added to list (ID: {number} )")
     return task_list
 
-def updating_task(task_list, task, description, updated=datetime.datetime.now().strftime("%d %B %Y")):
+
+def update_description(task_list, task, description, updated=datetime.datetime.now().strftime("%d %B %Y")):
     for tasks in task_list:
         if tasks["task"] == task:
             tasks["description"] = description
             tasks["updated"] = updated
-            print(f"{task} description updated to {description}")
+            print(f"{task} description updated to '{description}'")
             return task_list
 
 def delete_task(task_list, task):
@@ -29,15 +31,30 @@ def delete_task(task_list, task):
     if task not in task_list:
         print(f"{task} not in list")
 
+def printing_tasks(task_list):
+    for tasks in task_list:
+        update = tasks.get("updated", "Not yet")
+        print(f"Task: {tasks['task']} | ID: {tasks["id"]} | Status: {tasks["status"]} | Description: {tasks['description']} | Created: {tasks["created_at"]} | Last updated: {update}")
+
+def update_status(task_list, task, status, updated=datetime.datetime.now().strftime("%d %B %Y")):
+    for tasks in task_list:
+        if tasks["task"] == task:
+            tasks["status"] = status
+            tasks["updated"] = updated
+            return task_list
+
 
 
 adding_task(list, "swimming")
 adding_task(list, "sleeping")
-print (list)
 
-updating_task(list, "swimming", "going to the pool")
 
-print(list)
+update_description(list, "swimming", "going to the pool")
+update_description(list, "sleeping", "going to bed")
 
-delete_task(list, "sleeping")
-print(list)
+
+update_status(list, "sleeping", "done")
+delete_task(list, "swimming")
+
+
+printing_tasks(list)
