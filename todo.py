@@ -54,3 +54,18 @@ def update_status(task_list, task, status, updated=datetime.datetime.now().strft
             return task_list
 
 #up to creating a menu to add, update description or status, delete task, list all task, list by status
+
+print("--Menu--")
+print("1. Add task")
+print("2. Update task")
+print("3. Delete task")
+print("4. Print tasks")
+
+choice = int(input("Enter your choice: "))
+list = loading_file()
+if choice == 1:
+    task_name = input("Enter task name: ")
+    task_description = input("Enter task description: ")
+    saving_file(list)
+
+
