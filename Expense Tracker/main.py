@@ -39,6 +39,7 @@ def categorised_expenses(list, description):
 
 
 
+
 list = []
 
 def main():
